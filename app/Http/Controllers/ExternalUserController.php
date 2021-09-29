@@ -91,6 +91,10 @@ class ExternalUserController extends Controller
      */
     public function update($id)
     {
+        $validated = request()->validate([
+            'full_name' => 'required',
+        ]);
+
         $external_user =  ExternalUser::find($id);
         $external_user->full_name = request()->full_name;
         $external_user->contact_no = request()->contact_no;
